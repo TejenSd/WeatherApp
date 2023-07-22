@@ -19,6 +19,6 @@ export class WeatherService {
       params: new HttpParams()
       .set('city', cityName)
     })
-  }   
+  }  
 
 }

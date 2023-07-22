@@ -1,5 +1,64 @@
-<div class="container">
-  <!-- upper data of page -->
+<div class="search">
+  <form #form = "ngForm" (submit)="onSubmit()">
+    <input type="text" placeholder="Search City" name="cityName" 
+    [(ngModel)]="cityName">
+  </form>
+</div>
+<div class="container" *ngIf="weatherdata">
+  <div class="upper-data">
+    <img src="../assets/hot.jpg" *ngIf = "weatherdata.main.temp > 15" > 
+    <img src="../assets/cold.jpg" *ngIf = "weatherdata.main.temp <= 15">
+    
+    <div class="weather-data">
+       <div class="location">{{ weatherdata.name}}</div>
+       <div class="temprature">{{ weatherdata.main.temp | number: '1.0-0'}}°C</div>
+    </div>
+  </div>
+  <div class="lower-data">
+    <div class="more-info-label">
+      More Information
+    </div>
+    <div class="more-info-container">
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/min.jpg">
+          <span>min</span>    
+        </div>
+        <div class="info-block-value">
+          {{weatherdata.main.temp_min}}°C
+        </div>
+      </div>
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/max.jpg">
+          <span>max</span>    
+        </div>
+        <div class="info-block-value">
+          {{weatherdata.main.temp_max}}°C
+        </div>
+      </div>
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/humity.jpg">
+          <span>humity</span>    
+        </div>
+        <div class="info-block-value">
+          {{weatherdata.main.humidity}}%
+        </div>
+      </div>
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/wind.png">
+          <span>wind</span>    
+        </div>
+        <div class="info-block-value">
+          {{weatherdata.wind.speed}} KM/H
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div class="container">
   <div class="upper-data">
     <img src="../assets/hot.jpg" *ngIf = "14 > 15" > 
     <img src="../assets/cold.jpg" *ngIf = "14 < 15">
@@ -9,8 +68,6 @@
        <div class="temprature">{{ 14.40 | number: '1.0-0'}}°C</div>
     </div>
   </div>
-
-  <!-- lower data of page -->
   <div class="lower-data">
     <div class="more-info-label">
       More Information
@@ -54,6 +111,6 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <router-outlet></router-outlet>

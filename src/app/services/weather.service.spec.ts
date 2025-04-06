@@ -12,5 +12,6 @@ describe('WeatherService', () => {
 
   it('should be created', () => {
     expect(service).toBeTruthy();
+    
   });
 });
